@@ -19,15 +19,16 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# URL for serving static files
 STATIC_URL = '/static/'
 
-# For development, Django will serve static files automatically if you have this:
-STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Add this if you have additional static files
-]
+# Location where static files will be collected (adjust for your project structure)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# For production, you need to collect static files using `collectstatic`:
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# Add static directories if necessary
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # If you have any custom static files
+]
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
